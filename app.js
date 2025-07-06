@@ -761,35 +761,3 @@ window.toggleTheme = toggleTheme;
 
 
 
-
-// Add this to your existing app.js file, in the DOMContentLoaded event listener
-function initializeProfileImages() {
-    const profileImages = document.querySelectorAll('.profile-photo, .profile-photo-large');
-    
-    profileImages.forEach(img => {
-        img.addEventListener('error', function() {
-            // Create fallback div if image fails to load
-            const fallback = document.createElement('div');
-            fallback.className = 'profile-placeholder';
-            fallback.textContent = 'F.M.';
-            fallback.style.cssText = `
-                color: var(--color-btn-primary-text);
-                font-size: 2rem;
-                font-weight: var(--font-weight-bold);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                height: 100%;
-            `;
-            
-            this.parentNode.replaceChild(fallback, this);
-        });
-    });
-}
-
-// Call this function in your existing DOMContentLoaded event listener
-document.addEventListener('DOMContentLoaded', function() {
-    // ... your existing code ...
-    initializeProfileImages();
-});
